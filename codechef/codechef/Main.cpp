@@ -5,8 +5,10 @@ using namespace std;
 int elements;
 int nums[100000];
 int counter[101];
-
+long long segmentProd;
 int elementMap[100000][101];
+int pow;
+int powerRaise;
 
 // initialize the counter for the elements.
 void initialize() {
@@ -25,7 +27,7 @@ void initialize() {
 	}
 }
 
-int power(long long num, int pow, int mod) {
+int power(int num, int pow, int mod) {
 	long long power = 1;
 	
 	while(pow > 0) {
@@ -33,20 +35,20 @@ int power(long long num, int pow, int mod) {
 			power = (power * num) % mod;
 		}
 		
-		num = (num * num) % mod;
+		num = ((long long)num * num) % mod;
 		pow /= 2;
 	}
 	
-	return power;
+	return (int)power;
 }
 
 // get the segment prod
 int getSegmentProd(int left, int right, int mod) {
-	long long segmentProd = 1;
+	segmentProd = 1;
 	
 	for (int i=2;i<101;i++) {
-		int pow = elementMap[right][i] - elementMap[left][i];
-		int powerRaise = power(i, pow, mod);
+		pow = elementMap[right][i] - elementMap[left][i];
+		powerRaise = power(i, pow, mod);
 		segmentProd = (segmentProd * powerRaise) % mod;
 		if (segmentProd == 0) {
 			break;
@@ -106,6 +108,15 @@ freopen("../inp_out/output.txt", "w", stdout);
 
 }
 
+int getSegProdBrute(int left, int right, int mod) {
+	long long prod = 1;
+	for (int i=left;i<=right;i++) {
+		prod = (prod* nums[left]) % mod;
+	}
+	
+	return (int) prod;
+}
+
 int main() {
 	solve();
 	
@@ -121,6 +132,30 @@ int main() {
 		int prod = getSegmentProd(2, 9999, 485747);
 	}
 	*/
+	
+	// test correctness
+	// /*
+	int mod = 487587;
+	elements = 1000;
+	for (int i=0;i<elements;i++) {
+		nums[i] = 97;
+	}
+	
+	initialize();
+	
+	for (int i=0;i<elements;i++) {
+		for (int j=i;j<elements;j++) {
+			int prod1 = getSegmentProd(i,j,mod);
+			int prod2 = getSegProdBrute(i,j,mod);
+			
+			if (prod1 != prod2) {
+				printf("PROBLEM");
+				printf("\n");
+			}
+		}
+	}
+	// */
+	
 	return 0;
 }
 
