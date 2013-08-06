@@ -3,10 +3,10 @@
 using namespace std;
 
 int elements;
-int nums[100000];
-int counter[101];
+int nums[100010];
+int counter[111];
 long long segmentProd;
-int elementMap[100000][101];
+int elementMap[100010][111];
 int pow;
 int powerRaise;
 
@@ -60,6 +60,17 @@ int getSegmentProd(int left, int right, int mod) {
 	return (int)segmentProd;
 }
 
+// brute to verify that it works.
+int getSegProdBrute(int left, int right, int mod) {
+	long long prod = 1;
+	for (int i=left;i<=right;i++) {
+		prod = (prod* nums[i]) % mod;
+	}
+	
+	return (int) prod;
+}
+
+
 void solve() {
 	
 	
@@ -99,22 +110,13 @@ freopen("../inp_out/output.txt", "w", stdout);
 		scanf("%d", &mod);
 		left--;
 		right--;
-		product = getSegmentProd(left, right, mod);
-		
+		//product = getSegmentProd(left, right, mod);
+		product  = getSegProdBrute(left, right, mod);
 		printf("%lld", product);
 		printf("\n");
 	}
 	
 
-}
-
-int getSegProdBrute(int left, int right, int mod) {
-	long long prod = 1;
-	for (int i=left;i<=right;i++) {
-		prod = (prod* nums[left]) % mod;
-	}
-	
-	return (int) prod;
 }
 
 int main() {
@@ -134,11 +136,11 @@ int main() {
 	*/
 	
 	// test correctness
-	// /*
+	/*
 	int mod = 487587;
 	elements = 1000;
 	for (int i=0;i<elements;i++) {
-		nums[i] = 97;
+		nums[i] = 89;
 	}
 	
 	initialize();
@@ -154,7 +156,7 @@ int main() {
 			}
 		}
 	}
-	// */
+	*/
 	
 	return 0;
 }
