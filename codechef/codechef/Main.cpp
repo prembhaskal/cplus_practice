@@ -64,7 +64,7 @@ int getSegmentProd(int left, int right, int mod) {
 int getSegProdBrute(int left, int right, int mod) {
 	long long prod = 1;
 	for (int i=left;i<=right;i++) {
-		prod = (prod* nums[i]) % mod;
+		prod = (prod * nums[i]) % mod;
 	}
 	
 	return (int) prod;
@@ -110,9 +110,8 @@ freopen("../inp_out/output.txt", "w", stdout);
 		scanf("%d", &mod);
 		left--;
 		right--;
-		//product = getSegmentProd(left, right, mod);
-		product  = getSegProdBrute(left, right, mod);
-		printf("%lld", product);
+		product = getSegmentProd(left, right, mod);
+		printf("%d", product);
 		printf("\n");
 	}
 	
