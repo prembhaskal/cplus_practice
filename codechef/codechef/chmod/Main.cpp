@@ -66,8 +66,8 @@ void solve() {
 // read from file for local
 
 #ifndef ONLINE_JUDGE
-freopen("../inp_out/input.txt", "r", stdin);
-freopen("../inp_out/output.txt", "w", stdout);
+freopen("../../inp_out/input.txt", "r", stdin);
+freopen("../../inp_out/output.txt", "w", stdout);
 #endif
 
 	scanf("%d", &elements);
