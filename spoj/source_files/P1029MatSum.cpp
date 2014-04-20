@@ -18,6 +18,28 @@ void update1D(int idxOfBit, int idx, int val) {
 	
 }
 
+void update2D(int x, int y, int val) {
+	y++;
+	while (y <= N) {
+		update1D(y, x, val);
+		y += (y & -y);
+	}
+}
+
+void update2DInline(int x, int y, int val) {
+	y++;
+	x++;
+	while ( y <= N) {
+		int y1 = y;
+		int x1 = x;
+		while (x1 <= N) {
+			bits[y1][x1] += val;
+			x1 += ( x1 & -x1);
+		}
+		y += (y & -y);
+	}
+}
+
 int sumTill1D(int idxOfBit, int idx) {
 	int sum = 0;
 	while (idx > 0) {
@@ -35,14 +57,6 @@ int sum1D(int idxOfBit, int low, int high) {
 	int sum = sumTill1D(idxOfBit, high);
 	sum -= sumTill1D(idxOfBit, low - 1);
 	return sum;
-}
-
-void update2D(int x, int y, int val) {
-	y++;
-	while (y <= N) {
-		update1D(y, x, val);
-		y += (y & -y);
-	}
 }
 
 int sumTill2D(int y, int x1, int x2) {
@@ -87,22 +101,23 @@ int sum2D(int y1, int y2, int x1, int x2) {
 	 	while (true) {
 	 		scanf("%s", operation);
 	 		if (operation[1] == 'E') {
-	 			scanf("%d", &x1);
-	 			scanf("%d", &y1);
-	 			scanf("%d", &val);
+//	 			scanf("%d", &x1);
+//	 			scanf("%d", &y1);
+//	 			scanf("%d", &val);
+				scanf("%d %d %d", &x1, &y1, &val);
 	 			
 	 			diff = val - nums[x1][y1];
 	 			nums[x1][y1] = val;
-	 			update2D(x1, y1, diff);
+	 			update2DInline(x1, y1, diff);
 	 		}
 	 		else if (operation[1] == 'U') {
-	 			scanf("%d", &x1);
-	 			scanf("%d", &y1);
-	 			scanf("%d", &x2);
-	 			scanf("%d", &y2);
+//	 			scanf("%d", &x1);
+//	 			scanf("%d", &y1);
+//	 			scanf("%d", &x2);
+//	 			scanf("%d", &y2);
+				scanf("%d %d %d %d", &x1, &y1, &x2, &y2);
 	 			sum = sum2D(y1, y2, x1, x2);
-	 			printf("%d", sum);
-	 			printf("\n");
+	 			printf("%d\n", sum);
 	 		}
 	 		else {
 	 			break;
