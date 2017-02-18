@@ -31,6 +31,9 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="celsiusConverter.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="helloworld.c">
 			<Option compilerVar="CC" />
 		</Unit>
