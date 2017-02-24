@@ -31,7 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="celsiusConverterForLoop.c">
+		<Unit filename="ch1filecopying1.c">
 			<Option compilerVar="CC" />
 			<Option target="Debug" />
 		</Unit>
