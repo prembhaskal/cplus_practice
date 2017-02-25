@@ -31,9 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="ch1filecopying1.c">
+		<Unit filename="celsiusConstants.c">
 			<Option compilerVar="CC" />
-			<Option target="Debug" />
 		</Unit>
 		<Extensions>
 			<code_completion />
