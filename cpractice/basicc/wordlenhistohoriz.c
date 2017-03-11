@@ -41,7 +41,7 @@ int main() {
 
 	// print the horizontal histogram
 	for (wordlen = 0; wordlen < MAXWORDLENGTH + 1; ++wordlen) {
-		printf("%d ", wordlen);
+		printf("%d\t", wordlen);
 		for (i = 0; i < lenhisto[wordlen]; ++i) {
 			putchar('*');
 		}
@@ -68,14 +68,14 @@ int main() {
 	}
 	putchar('\n');
 	
-	for (maxht = maxht; maxht >= 0; --maxht) {
+	for (maxht = maxht; maxht > 0; --maxht) {
 		for (wordlen = 0; wordlen < MAXWORDLENGTH + 1; ++wordlen) {
 			if (lenhisto[wordlen] == maxht) {
-				--lenhisto[wordlen];
+				--lenhisto[wordlen]; // cut histogram whenever we reach that size.
 				putchar('*');
 			}
 			else {
-				putchar(' ');
+				putchar(' '); // spacing for decoration.
 			}
 			putchar(' ');
 		}
@@ -87,7 +87,5 @@ int main() {
 	}
 	putchar('\n');
 	
-	
-
 	return 0;
 }
