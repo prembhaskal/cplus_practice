@@ -31,7 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="celsiusConstants.c">
+		<Unit filename="linecount.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
