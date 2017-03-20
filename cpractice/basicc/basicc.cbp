@@ -31,7 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="linecount.c">
+		<Unit filename="wordlenhistohoriz.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Extensions>
