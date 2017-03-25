@@ -31,7 +31,7 @@ int main() {
 	return 0;
 }
 
-/* reads one line of input limited to lim and returns the length of line read.*/
+/* reads one line of input limited to lim and returns the length of line read.  */
 int getlinesize(char s[], int lim) {
 	int idx, ch;
 	idx = 0;
