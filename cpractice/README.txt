@@ -3,7 +3,7 @@
 #compile with warnings, with debug(-g) enabled
 gcc -Wall -g source.c
 
-#debugger
+#debugger, needs -g in gcc.
 gdb a.out
 break linenumber
 run ./a.out < test.txt
