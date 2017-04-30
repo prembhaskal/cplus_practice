@@ -62,7 +62,15 @@ int main() {
 	enum confuse {FIRST=2, SEC=1, THIRD}; // numbering continues from last specified one.
 	pint(FIRST);
 	pint(SEC);
-	pint(THIRD);	
+	pint(THIRD);
+	
+	// const declaration
+	const double e = 2.718281;
+	const char msg[] = "warning";
+	
+	pchar(msg[2]);
+	msg[2] = 'R';  // cause compiler warning, even array content cannot be changed, unlike Java final.
+	pchar(msg[2]);
 	
 	return 0;
 }
