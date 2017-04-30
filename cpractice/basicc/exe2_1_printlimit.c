@@ -5,6 +5,12 @@
 /*
 program to print the limits of different char types.
 */
+void computecharlimits();
+void computeintlimits();
+void computeshortintlimits();
+void computelongintlimits();
+void computefloatlimits();
+void computedoublelimits();
 
 int main() {
 	
@@ -18,38 +24,134 @@ int main() {
 	
 	printf("computing values...\n");
 	
-	printf("char value computation\n");
-	char ch;
-	ch = -1;
-	while (ch < 0) {
-		ch = ch * 2;
-		printf("%d\n", ch);
-	}
+	computecharlimits();
 	
-	char chc, chn;
-	chc = 1;
-	chn = 1;
-	while (chn > 0) {
-		chn = chc + chc;
-		if (chn < 0) {
-			chn = chc + chc - 1;
-		}
-		chc = chn;
-		printf("%d\n", chn);
-	}
+	computeintlimits();
 	
-	printf("\ncomputing integers limits...\n");
-	int ic, in;
-	ic = 1;
-	in = 1;
-	while (in > 0) {
-		in = ic + ic;
-		if (in < 0) {
-			in = ic + ic - 1;
-		}
-		ic = in;
-		printf("%d\n", in);
-	}
+	computeshortintlimits();
+	
+	computelongintlimits();
+	
+	computefloatlimits();
+	
+	computedoublelimits();
 	
 	return 0;
 }
+
+void computeshortintlimits() {
+	printf("\ncomputing short int limits...\n");
+	short int c, n;
+	c = n = 1;
+	while (n > 0) {
+		n = c + c;
+		if (n < 0) {
+			n = c - 1;
+			n = n + c;
+		}
+		if (n < 0) // overflow occurred.
+			printf("%d\n", c);
+		c = n;
+	}
+}
+
+void computecharlimits() {
+	printf("\ncomputing char limits...\n");
+	char c, n;
+	c = n = 1;
+	while (n > 0) {
+		n = c + c;
+		if (n < 0) {
+			n = c - 1;
+			n = n + c;
+		}
+		if (n < 0) // overflow occurred.
+			printf("%d\n", c);
+		c = n;
+	}
+}
+
+void computeintlimits() {
+	printf("\ncomputing int limits...\n");
+	int c, n;
+	c = n = 1;
+	while (n > 0) {
+		n = c + c;
+		if (n < 0) {
+			n = c - 1;
+			n = n + c;
+		}
+		if (n < 0) // overflow occurred.
+			printf("%d\n", c);
+		c = n;
+	}
+}
+
+void computelongintlimits() {
+	printf("\ncomputing long int limits...\n");
+	long int c, n;
+	c = n = 1;
+	while (n > 0) {
+		n = c + c;
+		if (n < 0) {
+			n = c - 1;
+			n = n + c;
+		}
+		if (n < 0) // overflow occurred.
+			printf("%ld\n", c);
+		c = n;
+	}
+}
+
+void computefloatlimits() {
+	int iter = 0;
+	printf("\ncomputing float limits...\n");
+	float c, n;
+	c = n = 1;
+	while (n > 0) {
+		++iter;
+		n = c + c;
+		if (n < 0) {
+			n = c - 1;
+			n = n + c;
+		}
+			printf("%f\n", c);
+		if (n == c) { // after limit, n is set to infinity, hence will remain same,
+			printf("%f\n", c);
+			n = -1;
+		}
+		if (iter > 100) {
+			printf("%f\n", c);
+			n = -1;
+		}
+			
+		c = n;
+	}
+}
+
+void computedoublelimits() {
+	int iter = 0;
+	printf("\ncomputing double limits...\n");
+	long double c, n;
+	c = n = 1.0;
+	while (n > 0) {
+		++iter;
+		n = c + c;
+		if (n < 0) {
+			n = c - 1.0;
+			n = n + c;
+		}
+			printf("%Lf\n", c);
+		if (n == c) { // after limit, n is set to infinity, hence will remain same,
+			printf("%Lf\n", c);
+			n = -1;
+		}
+		if (iter > 100) {
+			printf("%Lf\n", c);
+			n = -1;
+		}
+			
+		c = n;
+	}
+}
+
