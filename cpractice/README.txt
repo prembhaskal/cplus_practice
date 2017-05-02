@@ -8,3 +8,7 @@ gdb a.out
 break linenumber
 run ./a.out < test.txt
 explore variable
+
+# include maths functions in linux. like <math.h>, else you'll get error like  undefined reference to 'sqrt'
+gcc -lm
+
