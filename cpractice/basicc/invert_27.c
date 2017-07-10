@@ -28,10 +28,9 @@ int invert(int x, unsigned int p, unsigned int n) {
         return 0;
     }
 
-    int msk = ~0;// 11111111111....all ones
-    int msk_nshift = msk << (p + 1 - n); // 111111110000000...(p + 1 - n zeroes)
-    int msk_pshift = msk << (p + 1); // 111111100000...(p+1 zeroes)
-    msk = msk_nshift & ~msk_pshift; // this will give msk of format 0000011111(n bits)0000000
+    int msk = ~0 << n;
+    msk = ~msk << (p + 1 - n);
+
     printf("mask is %o\n", msk);
 
     int invbits = (x ^ ~0) & msk;
