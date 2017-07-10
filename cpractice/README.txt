@@ -1,5 +1,8 @@
 # practising code from k and r - c
 
+# run after compiling
+./a.out
+
 #compile with warnings, with debug(-g) enabled
 gcc -Wall -g source.c
 
