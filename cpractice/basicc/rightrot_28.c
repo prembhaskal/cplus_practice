@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-int rightrot(int, unsigned int);
+int rightrot(unsigned int, unsigned int);
 
 int main() {
-    int x = 033;
+    unsigned int x = 033;
 
     printf("number printed %o\n", x);
 
@@ -13,7 +13,7 @@ int main() {
     return 0;
 }
 
-int rightrot(int x, unsigned int n) {
+int rightrot(unsigned int x, unsigned int n) {
     // mask with LSB set to 1;
     unsigned int msk = ~0;
     msk = msk ^ (msk >> 1);
