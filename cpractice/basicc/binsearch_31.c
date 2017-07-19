@@ -5,11 +5,16 @@ int binsearch(int key, int v[], int n);
 int main() {
     int v[] = {2, 4, 5, 7, 8, 8, 10, 19};
     int key;
+    int len = 8;
 
-    key = 2;
-    printf("is number %d present in array: %s\n", key, (binsearch(key,v,7) >= 0) ? "found" : "not found");
+    key = 9;
+    printf("is number %d present in array: %s\n", key, (binsearch(key,v,len) >= 0) ? "found" : "not found");
     key = 3;
-    printf("is number %d present in array: %s\n", key, binsearch(key,v,7) >= 0 ? "found" : "not found");
+    printf("is number %d present in array: %s\n", key, (binsearch(key,v,len) >= 0) ? "found" : "not found");
+    key = 19;
+    printf("is number %d present in array: %s\n", key, (binsearch(key,v,len) >= 0) ? "found" : "not found");
+    key = 20;
+    printf("is number %d present in array: %s\n", key, (binsearch(key,v,len) >= 0) ? "found" : "not found");
 
 
     return 0;
@@ -36,6 +41,8 @@ int binsearch(int key, int v[], int n) {
 
     if (v[mid] == key)
         return mid; /*match*/
+    else if (low == high && v[low] == key)
+        return low;
     else
         return -1; /*no match*/
 }
