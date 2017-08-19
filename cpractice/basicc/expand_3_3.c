@@ -6,6 +6,7 @@
 
 void expand(char [], char []);
 int readLineSize(char [], int);
+int fillGaps(char [], int, int, int);
 
 int main() {
     char s1[LIMIT], s2[LIMIT];
@@ -35,12 +36,13 @@ void expand(char s1[], char s2[]) {
             hypenbw = 1;
         }
         else if (hypenbw) {
-            // read lastch, note lastch is already captured.
+            // read last ch, note last ch is already captured.
             ++lastch;
-            for (; lastch <= s1[idx]; ++idy) {
-                s2[idy] = lastch;
-                lastch++;
-            }
+//            for (; lastch <= s1[idx]; ++idy) {
+//                s2[idy] = lastch;
+//                lastch++;
+//            }
+            idy = fillGaps(s2, lastch, s1[idx], idy);
             lastch = s1[idx]; // last element read.
             hypenbw = 0;
         }
@@ -51,10 +53,17 @@ void expand(char s1[], char s2[]) {
         }
     }
 
-    // last element was hypen
+    // last element was hypen.
     s2[idy++] = '-';
 
     s2[idy] = '\0';
+}
+
+int fillGaps(char s2[], int startch, int lastch, int idx) {
+    for (; startch <= lastch; ++idx, ++startch) {
+        s2[idx] = startch;
+    }
+    return idx;
 }
 
 int readLineSize(char s[], int lim) {
