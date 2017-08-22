@@ -16,6 +16,13 @@ int main() {
     printf("string %s is expanded to %s", s1, s2);
 }
 
+/*
+reads fragment by fragment
+startchar-endchar   =
+a is start of fragment,
+- is important to find presence of fragment
+endchar is end of fragment.
+*/
 void expand(char s1[], char s2[]) {
     int idx, idy, lastch;
 
@@ -29,24 +36,20 @@ void expand(char s1[], char s2[]) {
         s2[idy] = '-';
 
     for (; idx < s1len; ++idx) {
-        if (s1[idx] == '-') {
+        if (s1[idx] == '-') { // hypen indicates that it is middle of fragment
             if (hypenbw) { // read continuous non-leading hypens.
                 s2[idy++] = '-';
             }
             hypenbw = 1;
         }
-        else if (hypenbw) {
+        else if (hypenbw) { // end of fragment
             // read last ch, note last ch is already captured.
             ++lastch;
-//            for (; lastch <= s1[idx]; ++idy) {
-//                s2[idy] = lastch;
-//                lastch++;
-//            }
             idy = fillGaps(s2, lastch, s1[idx], idy);
             lastch = s1[idx]; // last element read.
             hypenbw = 0;
         }
-        else {
+        else { // start of a fragment
             s2[idy++] = s1[idx];
             lastch = s1[idx];
             hypenbw = 0;
