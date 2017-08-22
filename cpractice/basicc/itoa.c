@@ -6,23 +6,40 @@ void reverse_str(char []);
 
 int main() {
     char s[20] = "123";
+
     printf("before reverse %s\n", s);
     reverse_str(s);
     printf("after reverse %s\n", s);
 
-    int num = 12345;
+    int num = -12345;
     itoa(num, s);
-    printf("after conversion to string %s", s);
+    printf("after conversion to string %s\n", s);
+
+    itoa(-2147483648, s);
+    printf("after conversion to string %s\n", s);
+
+    return 0;
 }
 
 void itoa(int num, char s[]) {
     int idx;
     idx = 0;
-    do {
-        s[idx++] = '0' + num % 10;
+    int sign;
+    unsigned int n; // unsigned to handle largest -ve number.
+    if ((sign = num) < 0) {
+            n = -num;
     }
-    while ((num /= 10) > 0);
+    else {
+        n = num;
+    }
 
+    do {
+        s[idx++] = '0' + n % 10;
+    }
+    while ((n /= 10) > 0);
+    if (sign < 0) {
+        s[idx++] = '-';
+    }
     s[idx] = '\0';
     reverse_str(s);
 }
