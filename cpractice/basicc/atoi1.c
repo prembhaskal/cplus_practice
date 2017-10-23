@@ -6,17 +6,21 @@
 int atoi(char[]);
 int readLineAndSize(char [], int);
 
+/*
+
+    Program to read the number from input. stops reading at first non-digit character.
+*/
 int main() {
     char s[LIMIT];
     int len = readLineAndSize(s, LIMIT);
 
     int num = atoi(s);
 
-    printf("string %s of len %d and converted to number is %d", s, len, num);
+    printf("string %s of len %d and converted to number is %d\n", s, len, num);
 }
 
 /*
-skip whitespaces if any
+skip white spaces if any
 read sign if any
 read integer part and convert it.
 */
