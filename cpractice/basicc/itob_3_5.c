@@ -15,7 +15,7 @@ read integer n and convert to base b character representation into string s.
 */
 int main() {
 
-  int base = 8;
+  int base = 2;// 8, 16
 
   char s[LIMIT];
   int lineSize = readSizeAndLine(s, LIMIT);
@@ -29,6 +29,7 @@ int main() {
 
   printf("string after conversion to base %d is %s", base, convertedStr);
   printf("\n");
+  
 
   return 0;
 }
@@ -37,11 +38,12 @@ int itob(int n, char s[], int base) {
   int idx = 0;
   int rem;
 
-  while (n > 0) {
+  do {
     rem = n % base;
     s[idx++] = convertToAscii(rem);
     n /= base;
-  }
+  } while (n > 0 && idx < LIMIT);
+
   s[idx] = '\0';
 
   reverseStr(s);
