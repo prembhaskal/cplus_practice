@@ -38,7 +38,7 @@ convert to double value.
 */
 double atof(char s[]){
   double value = 0.0;
-  double fracdiv = 1.0;
+  double fracdiv;
 
   int idx, sign;
 
@@ -55,18 +55,15 @@ double atof(char s[]){
   }
 
   // read decimal part
-  for (; s[idx] != '\0' && isdigit(s[idx]); ++idx) {
+  for (; s[idx] != '\0' && isdigit(s[idx]); ++idx)
     value = value * 10.0 + (s[idx] - '0');
-  }
 
   // read fractional part
-  if (s[idx] == '.') {
+  if (s[idx] == '.')
     ++idx;
-    for (; s[idx] != '\0' && isdigit(s[idx]); ++idx) {
-      fracdiv = fracdiv / 10.0;
-      value = value + (s[idx] - '0') * fracdiv;
-    }
-  }
+
+  for (fracdiv = 0.1; s[idx] != '\0' && isdigit(s[idx]); ++idx, fracdiv /= 10.0)
+    value = value + (s[idx] - '0') * fracdiv;
 
   return value * sign;
 
