@@ -7,7 +7,7 @@ double readExponentValue(char [], int);
   extension to existing atof
   it handles scientific notation too. like e,E and +16,16,-16 etc 
 */
-double atof_exp(char s[]){
+double atof(char s[]){
   double value = 0.0;
   double fracdiv;
 

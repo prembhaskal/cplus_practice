@@ -8,7 +8,7 @@ int getop(char []);
 int main () {
   int read;
   char s[LIMIT];
-  int max = 10;
+  int max = 40;
 
   while((read=getop(s)) != EOF) {
     switch(read) {
