@@ -45,6 +45,15 @@ int main() {
           printf("error: division by zero\n");
         break;
 
+      case '%':
+        op2 = pop();
+        if (op2 != 0.0) {
+          push((int)pop() % (int)op2);
+        }
+        else 
+          printf("error:modulus division by zero\n");
+        break;
+
       case '\n':
         printf("printing top of stack %.8g\n", pop());
         break;

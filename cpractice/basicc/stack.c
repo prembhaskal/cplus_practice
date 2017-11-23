@@ -25,3 +25,4 @@ double pop() {
 
   return stack[--topOfStack];
 }
+
