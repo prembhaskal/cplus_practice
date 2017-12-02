@@ -6,7 +6,7 @@
 #compile with warnings, with debug(-g) enabled
 gcc -Wall -g source.c
 
-# compile multiple files together
+# compile multiple files together, where 
 gcc -Wall -g file1.c file2.c
 
 # compile and assemble but no link, produces filename.o
@@ -18,6 +18,7 @@ gcc -Wall -g mainfile.c filename.o
 #debugger, needs -g in gcc.
 gdb a.out
 break linenumber
+break filename:linenum
 run ./a.out < test.txt
 explore variable
 

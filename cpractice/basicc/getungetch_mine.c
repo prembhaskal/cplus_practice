@@ -3,18 +3,18 @@
 // with buffer array
 
 char buff[BUFF_SIZE];
-int bufp = -1; // buffer pointer
+int bufp = 0; // buffer pointer
 
 int pgetch() {
-  if (bufp >= 0)
-    return buff[bufp--];
+  if (bufp > 0)
+    return buff[--bufp];
   else
     return getchar();
 }
 
 void pungetch(int ch) {
-  if (bufp >= BUFF_SIZE)
+  if (bufp > BUFF_SIZE)
     printf("buffer already full\n");
   else
-    buff[++bufp] = ch;
+    buff[bufp++] = ch;
 }
