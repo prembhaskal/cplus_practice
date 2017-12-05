@@ -1,11 +1,6 @@
 #include <ctype.h>
 #include <stdio.h>
-
-#define NUMBER '0'
-
-int mygetch();
-void myungetch(char);
-
+#include "calc.h"
 /*
   reads space/tab seperated operands and operators from input.
   skips spaces, tabs
@@ -21,21 +16,32 @@ int getop(char s[]) {
   int idx = 0;
   int ch;
   int afterSignCh;
+  static int bufferCh;
 
   // skip spaces, tabs
-  while ( (ch=mygetch()) == ' ' || ch == '\t')
-    ;
+  if (bufferCh != EOF) {
+    ch = bufferCh;
+    bufferCh = EOF;
+  }
+  else {
+    ch = getchar();
+  }
+  
+  while ( ch == ' ' || ch == '\t') {
+    ch = getchar();
+  }
 
   if (!isdigit(ch) && ch != '.') {
     // check if we have a signed number.
     if (ch == '+' || ch == '-') { 
-      afterSignCh = mygetch();
+      afterSignCh = getchar();
       if (isdigit(afterSignCh) || afterSignCh == '.') {
         s[idx++] = ch;
         ch = afterSignCh;
       }
       else {
-        myungetch(afterSignCh);
+        // myungetch(afterSignCh);
+        bufferCh = afterSignCh;
         return ch;
       }
 
@@ -47,24 +53,26 @@ int getop(char s[]) {
 // read decimal part.
   while(isdigit(ch)) {
     s[idx++] = ch;
-    ch = mygetch();
+    ch = getchar();
   }
 
 // read decimal point (probably 2 times in case decimal point is absent)
   if (ch == '.') {
     s[idx++] = ch;
-    ch = mygetch();
+    ch = getchar();
   }
 
 // read fraction part.
   while(isdigit(ch)) {
     s[idx++] = ch;
-    ch = mygetch();
+    ch = getchar();
   }
 
   if (ch != EOF) {
 // unread the character.
-    myungetch(ch);
+    // myungetch(ch);
+    bufferCh = ch;
+
   }
 
   s[idx] = '\0';
@@ -72,19 +80,3 @@ int getop(char s[]) {
   return NUMBER;
 }
 
-char bufferch;
-int present = 0;
-
-int mygetch() {
-  if (present) {
-    present = 0;
-    return bufferch;
-  }
-  return getchar();
-}
-
-void myungetch(char ch) {
-  bufferch = ch;
-  present = 1;
-  return;
-}

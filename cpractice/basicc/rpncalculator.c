@@ -1,16 +1,15 @@
 #include <stdio.h>
+#include "calc.h"
 
-#define NUMBER '0'
 #define LIMIT 100
-
-int getop(char []);
-double pop();
-void push(double);
-double atof(char []); 
 
 /*
 Reverse Polish Notation calculator
 each line is processed and calculated.
+
+gcc -Wall -g calc.h getop.c atof_float_e.c stack.c 
+mygetch.c rpncalculator.c -o rpn.out
+
 
 */
 int main() {

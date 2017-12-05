@@ -2,8 +2,8 @@
 
 #define STACK_SIZE 20
 
-double stack[STACK_SIZE];
-int topOfStack = 0;
+static double stack[STACK_SIZE];
+static int topOfStack = 0;
 
 void push(double);
 double pop();
