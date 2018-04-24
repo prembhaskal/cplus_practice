@@ -26,17 +26,17 @@ void itoa(int num, char s[]) {
     idx = 0;
     int sign;
     unsigned int n; // unsigned to handle largest -ve number.
-    if ((sign = num) < 0) {
-            n = -num;
-    }
-    else {
+    
+    if ((sign = num) < 0)
+        n = -num;
+    else
         n = num;
-    }
 
     do {
         s[idx++] = '0' + n % 10;
     }
     while ((n /= 10) > 0);
+
     if (sign < 0) {
         s[idx++] = '-';
     }

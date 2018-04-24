@@ -2,12 +2,14 @@
 
 // print the number by using only putchar function
 void printdec(int n) {
-  int mod = n % 10;
+  if (n < 0) {
+    putchar('-');
+    n = -n;
+  }
   
-  n = n / 10;
-  if (n > 0)
-    printdec(n);
+  if (n/10 > 0)
+    printdec(n/10);
 
-  putchar('0' + mod);
+  putchar('0' + n%10);
   return;
 }

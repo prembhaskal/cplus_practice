@@ -2,24 +2,13 @@
 
 #define LIMIT 10
 
-int readLineSize(char s[], int limit);
+void printdec(int n);
 
 int main() {
-  char s[LIMIT];
-  int readChars = readLineSize(s, LIMIT);
-  printf("read chars %d read line %s \n", readChars, s);
+  int i;
+
+  i = 9301;
+  printdec(i);
+  putchar('\n');
   return 0;
-}
-
-// read 1 input line in this. stop at newline/EOF
-int readLineSize(char s[], int limit) {
-  int ch, idx;
-
-  for (idx = 0; idx < limit && (ch=getchar()) != EOF && ch != '\n'; ++idx) {
-    s[idx] = ch;
-  }
-
-  s[idx] = '\0';
-
-  return idx;
 }
